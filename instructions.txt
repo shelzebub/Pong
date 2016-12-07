@@ -1,0 +1,167 @@
+Unity
+
+Open Unity.
+Hit new project
+Give it a relevant name.
+Set up default for 2D.
+Create Project.
+Make some changes to the layout. 
+
+There are several view panels in the center of the program, two of them being Scene and Game.
+The Scene view is what you will be working with and the Game view shows what it will look like as your final 2D game product.
+
+Drag the game view tab to the right until you can see both the scene view as well as the game view simultaneously.
+This helps you see better when you move things around in your scene view.
+
+*To move the scene view, hold alt and use the mouse to drag the screen around.
+*Scroll in and out to zoom
+The camera
+
+Make sure the right panel has the Inspector tab selected. This allows you to customize your current selected objects
+
+The left panel shows a hierarchy of everything in your scene so far. You always start with a camera.
+
+If you look at the Scene view (Center panel) there is a camera object. 
+This is the object that takes care of all the rendering.
+Let’s click on it.
+
+Let’s look over to the right panel under inspector tab. There is a section called camera where we can see the Background and its corresponding color. Let’s change the background color to black.
+Click on the color bar and drag the color selector to black.
+
+Head back to the center panel. 
+Directly under the Game tag, click on Free Aspect and change it to 16:9
+This will show what the final game will export as.
+
+
+Time to add the paddles and the ball
+Move down to the bottom panel. If you right click in the empty folder called “Assets” , a list of options will appear. 
+Hover over Create and create a new Folder 
+Let’s rename this folder to be “Sprites”
+We call it Sprites because Sprites is the term for 2D images
+
+Head on in to your Sprites folder by double clicking it.
+Now inside the Sprites folder, right click and select Import New Asset
+Import your paddle sprite
+Import your ball sprite
+
+Select both sprites. 
+Press shift to select multiple objects at once.
+
+While those two sprites are selected 
+Any changes made now in the right panel will apply to both the sprites
+
+Let’s look at the right panel. We will change Pixel per Unit to 16, uncheck Generate Mip Maps, and for Filter Mode, we will select Point(no filter).
+We will then look under default, check Override for PC, Mac & Linux Standalone.
+For Max Size, select 128 and Format to Truecolor. Finish by clicking Apply.
+This part will not be explained
+
+This will make out game look less pixelated
+
+
+Drag the paddle sprite into the hierarchy of objects
+It should appear in your scene view as well as your game view
+
+If we go to the Scene view and click on our paddle now, we can move it around
+
+Our paddle looks a bit big so let’s change the size of the screen.
+To do this, we click on the camera object and look on the right panel.
+Click anywhere in the row where Size is and drag your cursor to the right.
+Let’s expand it to 15. (Or you can type it out)
+
+Let’s move our paddle more towards the left
+*If you ever lose your object in your scene view, simply go to the hierarchy, double click your object, and Unity will find your object for you
+
+
+Select your paddle object, and head to the Inspector tab in the right panel.
+
+To keep things symmetrical, we will use numbers rather than dragging the object in the scene view.
+Let’s change the position to -20, 0, 0, (X,Y,Z)
+
+Add the ball to the hierarchy but drag it into our Paddle object in the left panel to make the ball a child of the Paddle object
+
+This connects the ball and the paddle where if the paddle moves up and down, so will the ball.
+
+Let’s move the ball to the front of the paddle 2, 0, 0 (X,Y,Z) 
+	You realize the ball’s coordinates are relative to the paddle
+
+
+Let’s make the center line
+
+Drag in a new Paddle object and high light it. 
+Look at the Right Panel under inspect.
+Change the name of Paddle to Center Line and move it’s position to 0,0,0 (X,Y,Z)
+In the scale attribute, change X to 0.3 and Y to 0.2
+
+Now have Center line selected in the hierarchy in the left panel and click ctlr-d.
+This duplicates the object. Once you’ve done this, transform that object up by 2 in the Y axis. Repeat the process and play around with it until you have a dotted line all the way across the center.
+
+Let’s combine all the duplicates to clean up our hierarchy
+Go up to GameObject > Create Empty and let’s name it Level
+
+Select all of the  Center Line duplicates and rename them all at once to Center Line.
+Now drag them all into the empty object we just named Level
+
+Now you can collapse the Level object
+
+
+Now we will start the coding portion
+
+Go to your project viewer, the bottom panel, go back to Assets folder (your root folder) 
+Let’s create a new folder called Scripts
+Go into the Scripts folder and create a C# script
+Let’s call the C# script Paddle
+Double click on the file and a new window should pop up.
+Mono-Develop Unity is where you will edit your Unity code.
+
+We will copy pasta code. Feel free to learn this in your own time.
+
+Save run the program.
+
+Go back to the script file in the bottom panel, drag and drop the script to the paddle object. 
+When you see the green plus sign, let it go.
+You just added the script attributes to the paddle.
+
+Head back to unity and press run at the top of the window. 
+Now you should be able to control the paddle using W,S or up and down keys
+
+
+Create a new folder called physics under your Assets folder 
+Go into the physics folder
+Right click and create a new Physics Material and call it bounce
+Let’s have a look at it’s properties. 
+Set Dynamic Friction and Static Friction both to 0 
+Set the bounciness to 1
+
+
+Before coding for ball, 
+Highlight Paddle and let’s look at it’s properties
+At the bottom, we want to click on the Add component button.
+Select Physics, and then Box Collider
+Add one more component.
+Physics, RigidBody. Deselect Gravity. Select Is Kinematic
+Add the Bounce material in our physics folder into the material section of the Box Collider 
+Pull down Constraints, and check Freeze position Z and Freeze Rotation XYZ for safe measures because we are working with 3D physics now even though our game is still in 2D (technically)
+
+Now let’s make the bounds and enemy wall
+Import the enermy wall and the Ybounds Sprites
+Place them like how I do
+Add the Box Collider to them and the bounce material.
+Physics, RigidBody, Deselect Gravity, Select Is Kinematic.
+Again freeze Z and XYZ
+
+
+Now for the ball
+Highlight it, Select physics, Sphere Collider
+Let’s make the collision more realistic.
+Look for Radius and let’s drag it out to 0.55
+Add Component Physics, Rigid Body, Deselect gravity, Select Is Kinematic again, position Z, Rotation XYZ Freeze them all
+Add the Bounce material in our physics folder into the material section of the Sphere Collider 
+Change the speed of the ball to 1000
+
+Now let’s grab the code for the ball
+Make a new C#script and call it ball
+Copy paste the code into ball
+Save the file.
+Drag this ball code into the ball object
+Run the game
+All should be working.
