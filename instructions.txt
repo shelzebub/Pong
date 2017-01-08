@@ -165,3 +165,5 @@ Save the file.
 Drag this ball code into the ball object
 Run the game
 All should be working.
+
+-Recreation of Penguin Design's youtube video in text, by Shely Lin-
