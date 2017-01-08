@@ -5,7 +5,7 @@ Classic Pong game in 2D
 Everything is from Penguin Design 
 
 I am using these files for educational purposes. 
-I do not own any of the files.
+I do not own most of these files.
 
 The original sources can be found here:
 https://www.youtube.com/watch?v=jEeT23Rc0P0
