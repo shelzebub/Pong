@@ -1,8 +1,7 @@
 # Pong
 Classic Pong game in 2D
 
-
-Everything is from Penguin Design 
+I created an instruction set to create a game of Pong following Penguin Design's tutorial.
 
 I am using these files for educational purposes. 
 I do not own most of these files.
